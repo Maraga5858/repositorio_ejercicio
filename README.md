@@ -13,5 +13,4 @@ Este proyecto es una aplicación web desarrollada con **HTML**, **CSS** y **Vue.
 
 1. Clona este repositorio:
    ```bash
-   git clone [https://github.com/Maraga5858/repositorio_ejercicio
-](https://github.com/Maraga5858/repositorio_ejercicio)
+   git clone https://github.com/Maraga5858/repositorio_ejercicio
