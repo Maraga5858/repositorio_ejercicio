@@ -1,3 +1,4 @@
+/* GENERAL */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +13,13 @@ body {
 :root {
     --color_carrito: #f0f0f0;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* HEADER */
 
 header {
     display: flex;
@@ -32,14 +40,37 @@ header a {
     text-decoration: none;
 }
 
-.row {
+.mitad {
+    width: 50%;
+}
+
+.mitad:last-child {
     display: flex;
-    flex-direction: row;
+    justify-content: right;
+    padding-right: 2vw;
+}
+
+.boton_abrir {
+    border: none; 
+    padding: 1vw;  
+    cursor: pointer;
+
+    border: solid grey 0.1vw;
+
+    color: white;
+
+    border-radius: 16px;
+    background-color: rgb(97, 97, 97);
+}
+
+h1 {
+    margin-left: 1vw;
 }
 
 /* PRODUCTOS */
-h1 {
-    margin-left: 1vw;
+h3 {
+    margin: 0.5vw 0.5vw 0vw 1vw;
+    font-weight: normal;
 }
 
 #productos {
@@ -53,30 +84,40 @@ h1 {
 }
 
 .producto {
-    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+    overflow: hidden;
+    font-size: 1.2vw;
     border: solid grey 0.1vw;
     border-radius: 16px;
     background-color: rgb(219, 219, 219);
 }
 
+#producto_abajo {
+    padding: 1vw;
+}
+
+#contador {
+    margin-right: 1vw;
+}
+
+#contador p {
+    margin-top: 0.2vw;
+    padding: 0 0.5vw;
+}
+
 .producto button {
-    background-color: black;
-    color: white;
-    border-radius: 16px;
+    border: solid grey 0.1vw;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
     padding: 0.5vw;
 
     cursor: pointer;
-    margin: 1vw;
-    border: none;
 }
 
 .producto button:hover {
-    background-color: rgb(39, 39, 39);
-}
-
-.producto p {
-    margin: 1vw;
+    background-color: rgb(204, 204, 204);
 }
 
 .imagen_producto {
@@ -106,13 +147,19 @@ h1 {
     padding: 1vw 1vw 6vw 1vw;
 }
 
+#titulo_carrito {
+    gap: 18vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin-bottom: 1vw;
+}
+
 #carrito.oculto {
     transform: translateX(100%);
     opacity: 0;
-  }
-
-#carrito h2 {
-    margin-bottom: 1vw;
 }
 
 #productos_carrito {
@@ -183,9 +230,10 @@ h1 {
 }
 
 footer {
+    border-top: solid grey 0.1vw;
+    
     padding: 2vw;
     display: flex;
 
-    align-items: center;
-    background-color: #ffffff;
+    align-items: centergb(112, 112, 112)
 }

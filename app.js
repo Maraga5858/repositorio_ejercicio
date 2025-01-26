@@ -21,6 +21,8 @@ const App = {
   },
 
   methods: {
+
+    // Metodo para cambiar de productos la cantidad y subirla
     incrementarCantidadProducto(productoId) {
       const producto = this.productos.find((prod) => prod.id === productoId);
       if (producto.cantidadDeseada < 9) {
@@ -28,6 +30,7 @@ const App = {
       }
     },
 
+    // Metodo para cambiar de productos la cantidad y bajarla
     reducirCantidadProducto(productoId) {
       const producto = this.productos.find((prod) => prod.id === productoId);
       if (producto.cantidadDeseada > 1) {
@@ -35,6 +38,7 @@ const App = {
       }
     },
 
+    // Incrementar la cantidad pero de la libreria de carritos no de productos
     incrementarCantidad(carritoId) {
       const carrit = this.carrito.find((item) => item.id === carritoId);
       if (carrit.cantidad < 9) {
@@ -42,6 +46,7 @@ const App = {
       }
     },
 
+    // Reducir la cantidad pero de la libreria de carritos no de productos
     reducirCantidad(carritoId) {
       const carrit = this.carrito.find((item) => item.id === carritoId);
       if (carrit.cantidad > 1) {
@@ -49,6 +54,7 @@ const App = {
       }
     },
 
+    // Pa meter cosas en el carrito
     meterCarrito(productoID) {
       const producto = this.productos.find((prod) => prod.id === productoID);
       const carrit = this.carrito.find((item) => item.id === productoID);
@@ -58,7 +64,7 @@ const App = {
           carrit.cantidad += producto.cantidadDeseada;
         }
       } else {
-        this.carrito.push({
+        this.carrito.push({ //añadir elementos en la libreria carrito
           id: producto.id,
           nombre: producto.nombre,
           precio: producto.precio,
@@ -69,6 +75,7 @@ const App = {
       producto.cantidadDeseada = 1;
     },
 
+    // eliminar del carrito
     eliminarProducto(carritoId) {
       const carrit_index = this.carrito.findIndex((item) => item.id === carritoId);
       if (carrit_index !== -1) {
@@ -76,6 +83,7 @@ const App = {
       }
     },
 
+    // API
     cargarConversiones() {
       fetch("https://v6.exchangerate-api.com/v6/2d32faab06a3c28f785d7e33/latest/EUR")
         .then((response) => response.json())
@@ -86,6 +94,7 @@ const App = {
           console.error("Error al cargar las conversiones:", error);
         });
     },
+
 
     convertirTotal() {
       if (this.conversionesDisponibles[this.divisaSeleccionada]) {
@@ -107,17 +116,20 @@ const App = {
 
   template: `
     <header>
-      <button @click="mostrarCarrito = true">Abrir Carrito</button> <!-- Botón en el header -->
+      <div class="mitad">
+        <h1>Tienda de deportes</h1>
+      </div>
+      <div class="mitad">
+        <button class="boton_abrir" @click="mostrarCarrito = true">Abrir Carrito</button>
+      </div>
     </header>
-    
-    <h1>Productos</h1>
 
     <div id="productos">
       <div class="producto" v-for="producto in productos" :key="producto.id">
         <img class="imagen_producto" :src="producto.imagen" :alt="producto.nombre" />
-        <p>{{ producto.nombre }} <b>{{ producto.precio }}€</b></p>
-        <span class="row">
-          <div class="row">
+        <h3>{{ producto.nombre }} <b>{{ producto.precio }}€</b></h3>
+        <span id="producto_abajo" class="row">
+          <div id="contador" class="row">
             <button @click="reducirCantidadProducto(producto.id)">-</button>
             <p>{{ producto.cantidadDeseada }}</p>
             <button @click="incrementarCantidadProducto(producto.id)">+</button>
@@ -128,9 +140,9 @@ const App = {
     </div>  
 
     <div id="carrito" v-if="mostrarCarrito">
-      <div class="row">
+      <div id="titulo_carrito" class="row">
         <h2>Carrito</h2>
-        <button @click="mostrarCarrito = false">Cerrar</button> <!-- Cambia el valor para cerrar -->
+        <button class="boton_abrir" @click="mostrarCarrito = false">Cerrar</button>
       </div>
       
       <div id="productos_carrito">
